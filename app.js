@@ -22,8 +22,10 @@ window.addEventListener('mousemove', function (e) {
 var outer = document.querySelector('.outer');
 
 function onInnerBlockClick(e) {
-  e.target.classList.toggle('red');
-  console.log(e.currentTarget);
+  if (e.target.classList.contains('inner')) {
+    e.target.classList.toggle('red');
+    console.log(e.target.dataset.index);
+  }
 }
 
 outer.addEventListener('click', onInnerBlockClick);
