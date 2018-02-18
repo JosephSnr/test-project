@@ -3,8 +3,30 @@
 <head>
   <meta charset="utf-8" />
   <title>test project</title>
+  <link type="text/css" rel="stylesheet" href="./app.css" />
 </head>
 <body>
-  <h1>Это заголовок</h1>
+  <main>
+    <div class='outer'>
+      <div class='inner'></div>
+      <div class='inner'></div>
+      <div class='inner'></div>
+      <div class='inner'></div>
+    </div>
+    <form class='form'>
+      <input name='firstName' type='text' />
+      <input name='lastName' type='text' />
+      <label>
+        <input type='radio' name='sex' value='Male' />
+        Male
+      </label>
+      <label>
+        <input type='radio' name='sex' value='Female' id='radioFemale' />
+        Female
+      <label/>
+      <button type='submit'>Submit</button>
+    </form>
+  </main>
+  <script src='./app.js' defer></script>
 </body>
 </html>
