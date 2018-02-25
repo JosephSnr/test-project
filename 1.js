@@ -12,20 +12,21 @@ var form = document.querySelector('.form');
 
 var progress = document.getElementById('progress');
 var answer = document.getElementById('answer');
-var Male = document.getElementById('Male');
-var Female = document.getElementById('Female');
+var male = document.getElementById('Male');
+var female = document.getElementById('Female');
+var IGNORE_SELECT_VALUE = 'Выберите направление';
 var i = 0;
 
 form.addEventListener('change', function(e) {
-  if (e.target.dataset.index != 1) {
+  if (Number(e.target.dataset.index) !== 1) {
     i++;
     e.target.dataset.index = 1;
-      if (Number(Male.getAttribute('data-index')) + Number(Female.getAttribute('data-index')) == 1) {
-        Male.setAttribute('data-index', 1);
-        Female.setAttribute('data-index', 1);
+      if (Number(male.getAttribute('data-index')) + Number(female.getAttribute('data-index')) === 1) {
+        male.setAttribute('data-index', 1);
+        female.setAttribute('data-index', 1);
       }
     }
-  if ((e.target.value == '' || e.target.value == 'Выберите направление') && e.target.dataset.index == 1) {
+  if ((e.target.value === '' || e.target.value === IGNORE_SELECT_VALUE) && Number(e.target.dataset.index) === 1) {
     i--;
     e.target.dataset.index = 0;
   }
