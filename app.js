@@ -57,8 +57,18 @@ textInput.addEventListener('input', function (e) {
 });
 
 secondForm.addEventListener('submit', function (e) {
+  var errorElement;
   if (!textInput.validity.valid) {
-    console.log('textInput is invalid');
+    errorElement = document.createElement('p');
+    errorElement.classList.add('error');
+
+    if (textInput.validity.tooShort) {
+      errorElement.textContent = 'Текст слишком короткий';
+    } else {
+      errorElement.textContent = 'Поле неправильное';
+    }
+
+    secondForm.appendChild(errorElement);
     e.preventDefault();
   }
 });
