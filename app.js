@@ -42,3 +42,61 @@ form.addEventListener('submit', function (e) {
   e.preventDefault();
   console.log('submit');
 });
+
+////////////////////////////////////////////////////////////
+var secondForm = document.querySelector('#form2');
+var textInput = document.querySelector('#textInput');
+var numberInput = document.querySelector('#numberInput');
+
+textInput.addEventListener('input', function (e) {
+  if (!e.currentTarget.validity.valid) {
+    e.currentTarget.setCustomValidity('');
+  } else {
+    e.currentTarget.setCustomValidity('Вы ввели неправильный текст!');
+  }
+});
+
+secondForm.addEventListener('submit', function (e) {
+  var errorElement;
+  if (!textInput.validity.valid) {
+    errorElement = document.createElement('p');
+    errorElement.classList.add('error');
+
+    if (textInput.validity.tooShort) {
+      errorElement.textContent = 'Текст слишком короткий';
+    } else {
+      errorElement.textContent = 'Поле неправильное';
+    }
+
+    secondForm.appendChild(errorElement);
+    e.preventDefault();
+  }
+});
+////////////////////////////////////////////////////////////////
+
+var firstListFillButtonElement = document.querySelector('#firstListFillButton');
+var firstListClearButtonElement = document.querySelector('#firstListClearButton');
+var firstListElement = document.querySelector('#firstList');
+var ARRAY_LENGTH = 50;
+var listItems = Array(ARRAY_LENGTH).fill('Элемент списка #').map(function (item, id) {
+  return item + id;
+});
+
+firstListFillButtonElement.addEventListener('click', function (e) {
+  var listItemElement;
+  var listItemsFragment = document.createDocumentFragment();
+
+  for (var j = 0; j < ARRAY_LENGTH; j += 1) {
+    listItemElement = document.createElement('li');
+    listItemElement.textContent = listItems[j];
+    listItemsFragment.appendChild(listItemElement);
+  }
+
+  firstListElement.appendChild(listItemsFragment);
+});
+
+firstListClearButtonElement.addEventListener('click', function (e) {
+  while(firstListElement.firstChild) {
+    firstListElement.removeChild(firstListElement.firstChild);
+  }
+});

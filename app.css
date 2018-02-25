@@ -24,3 +24,31 @@
 .border {
   border: 2px solid black;
 }
+
+.exerciseBlock {
+  margin-top: 50px;
+  border: 2px solid black;
+  padding: 20px;
+}
+
+.error {
+  color: red;
+  font-weight: 700;
+}
+
+#textInput:valid {
+  border: 2px solid green;
+}
+
+#textInput:invalid {
+  border: 2px dashed red;
+}
+
+#textInput:hover {
+  border: 2px solid blue;
+}
+
+#firstList {
+  height: 300px;
+  overflow-y: scroll;
+}
