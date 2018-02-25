@@ -67,7 +67,7 @@ secondForm.addEventListener('submit', function (e) {
 var firstListFillButtonElement = document.querySelector('#firstListFillButton');
 var firstListClearButtonElement = document.querySelector('#firstListClearButton');
 var firstListElement = document.querySelector('#firstList');
-var ARRAY_LENGTH = 100000;
+var ARRAY_LENGTH = 50;
 var listItems = Array(ARRAY_LENGTH).fill('Элемент списка #').map(function (item, id) {
   return item + id;
 });
