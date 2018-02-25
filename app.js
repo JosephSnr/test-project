@@ -42,3 +42,22 @@ form.addEventListener('submit', function (e) {
   e.preventDefault();
   console.log('submit');
 });
+
+var secondForm = document.querySelector('#form2');
+var textInput = document.querySelector('#textInput');
+var numberInput = document.querySelector('#numberInput');
+
+textInput.addEventListener('input', function (e) {
+  if (!e.currentTarget.validity.valid) {
+    e.currentTarget.setCustomValidity('');
+  } else {
+    e.currentTarget.setCustomValidity('Вы ввели неправильный текст!');
+  }
+});
+
+secondForm.addEventListener('submit', function (e) {
+  if (!textInput.validity.valid) {
+    console.log('textInput is invalid');
+    e.preventDefault();
+  }
+});

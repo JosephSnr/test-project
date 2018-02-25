@@ -23,9 +23,16 @@
       <label>
         <input type='radio' name='sex' value='Female' id='radioFemale' />
         Female
-      <label/>
+      </label>
       <button type='submit'>Submit</button>
     </form>
+    <div class='exerciseBlock'>
+      <form id='form2' novalidate>
+        <input type='text' id='textInput' required minlength="3" maxlength="5" />
+        <input id="numberInput" type="number" min="2" max="3" />
+        <button type='submit'>Submit</button>
+      </form>
+    </div>
   </main>
   <script src='./app.js' defer></script>
 </body>
