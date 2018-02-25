@@ -43,6 +43,7 @@ form.addEventListener('submit', function (e) {
   console.log('submit');
 });
 
+////////////////////////////////////////////////////////////
 var secondForm = document.querySelector('#form2');
 var textInput = document.querySelector('#textInput');
 var numberInput = document.querySelector('#numberInput');
@@ -59,5 +60,33 @@ secondForm.addEventListener('submit', function (e) {
   if (!textInput.validity.valid) {
     console.log('textInput is invalid');
     e.preventDefault();
+  }
+});
+////////////////////////////////////////////////////////////////
+
+var firstListFillButtonElement = document.querySelector('#firstListFillButton');
+var firstListClearButtonElement = document.querySelector('#firstListClearButton');
+var firstListElement = document.querySelector('#firstList');
+var ARRAY_LENGTH = 100000;
+var listItems = Array(ARRAY_LENGTH).fill('Элемент списка #').map(function (item, id) {
+  return item + id;
+});
+
+firstListFillButtonElement.addEventListener('click', function (e) {
+  var listItemElement;
+  var listItemsFragment = document.createDocumentFragment();
+
+  for (var j = 0; j < ARRAY_LENGTH; j += 1) {
+    listItemElement = document.createElement('li');
+    listItemElement.textContent = listItems[j];
+    listItemsFragment.appendChild(listItemElement);
+  }
+
+  firstListElement.appendChild(listItemsFragment);
+});
+
+firstListClearButtonElement.addEventListener('click', function (e) {
+  while(firstListElement.firstChild) {
+    firstListElement.removeChild(firstListElement.firstChild);
   }
 });
