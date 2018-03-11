@@ -8,28 +8,28 @@ var listItems = Array(ARRAY_LENGTH).fill('Элемент списка #').map(fu
   return item + id;
 });
 
-function listFilling() {
+function fillList() {
   var listItemElement;
   var listItemsFragment = document.createDocumentFragment();
 
   for (j = 0; j < NEW_ELEMENTS_NUMBER; j++) {
     if (i < ARRAY_LENGTH) {
-    listItemElement = document.createElement('li');
-    listItemElement.textContent = listItems[i];
-    listItemsFragment.appendChild(listItemElement);
-    i++;
-  }
+      listItemElement = document.createElement('li');
+      listItemElement.textContent = listItems[i];
+      listItemsFragment.appendChild(listItemElement);
+      i++;
+    }
   }
   testListElement.appendChild(listItemsFragment);
 }
 
-listFilling.call();
+fillList();
 
 //testListStartButtonElement.addEventListener('click', listFilling);
 
 testListElement.addEventListener('scroll', function(e) {
   if (e.target.scrollHeight - e.target.clientHeight - e.target.scrollTop < 100) {
-    listFilling.call(e);
+    fillList();
   }
 });
 
@@ -38,5 +38,6 @@ testListClearButtonElement.addEventListener('click', function(e) {
     testListElement.removeChild(testListElement.firstChild);
   }
   i = 0;
-  listFilling.call();
+  testListElement.scrollTop = 0;
+  fillList();
 });
